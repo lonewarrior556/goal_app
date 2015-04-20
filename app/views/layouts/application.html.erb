@@ -15,9 +15,9 @@
   <ul>
     <% if logged_in? %>
       <li> Welcome, <%= current_user.username %> </li>
-      <!-- button to sign out -->
+      <li> <%= my_button_to(session_url,"Log Out", 'delete') %> </li>
       <% else %>
-      <!--  link to sign in-->
+      <li> <a href="<%= new_session_url %>">Sign In</a></li>
       <li> <a href="<%= new_user_url %>">Sign Up</a> </li>
     <% end %>
   </ul>

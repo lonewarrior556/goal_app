@@ -26,15 +26,56 @@ feature "the signup process" do
       expect(page).to_not have_content "Sign Up"
     end
 
-    # scenario "has a logout button" do
-    #   expect(page).to have_content "log out"
-    #
-    #
-    # scenario "redirects on log out"
-    #
-    #
-    # scenario "username not present"
-
+    scenario "signs user in after sign up" do
+      expect(page).to have_content "Log Out"
+      expect(page).to_not have_content("Sign In")
+      expect(page).to_not have_content("Sign Up")
+    end
   end
 
+
+  feature "Sign in/ Sign out" do
+
+    before(:each) do
+      visit new_user_url
+      fill_in 'Username', :with => "testing_username"
+      fill_in 'Password', :with => "biscuits"
+      click_button "Sign Up"
+      click_button "Log Out"
+    end
+
+    scenario "User can Sign In" do
+      click_link "Sign In"
+      fill_in 'Username', :with => "testing_username"
+      fill_in 'Password', :with => "biscuits"
+      click_button "Sign In"
+      expect(page).to have_content "Log Out"
+      expect(page).to_not have_content("Sign In")
+      expect(page).to_not have_content("Sign Up")
+      expect(page).to have_content "Welcome, testing_username"
+    end
+
+    scenario "redirects to login/signin page when not logged in" do
+      visit user_url(1)
+      expect(page).to have_content("Sign In")
+      expect(page).to_not have_content("testing_username")
+    end
+
+
+
+
+  end
 end
+
+#     scenario "log in redirects to user page"
+#       click on
+#
+#     #
+#     # scenario "redirects on log out"
+#     #
+#     #
+#     # scenario "username not present"
+#
+#   end
+#
+# end

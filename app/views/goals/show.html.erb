@@ -1,0 +1,4 @@
+<h1><%= @goal.title %></h1>
+
+
+<%= my_button_to(edit_goal_url(@goal),"Edit Goal", "get") if current_user.id == @goal.user_id%>

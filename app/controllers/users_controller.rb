@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :redirect_if_not_logged_in, only: [:show, :index, :edit, :update, :destroy]
+
   def index
     @users = User.all
   end
@@ -28,14 +30,21 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def update
+
+  end
+
   def destroy
   end
 
-
+  private
   def user_params
     params.require(:user).permit(:username, :password)
   end
 
+  def redirect_if_not_logged_in
+    redirect_to new_session_url unless logged_in?
+  end
 
 
 

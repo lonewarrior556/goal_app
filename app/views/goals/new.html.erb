@@ -1,0 +1,14 @@
+<h1>New Goal</h1>
+
+
+<form class="form" action="<%= goals_url %>" method="post">
+  <%= authentic_form %>
+  <label for="Title">Title
+  <input type="text" name="goal[title]" value="<%=@goal.title  %>" id="Title">
+  </label>
+  <br>
+  <label for="private">Private?</label>
+  <input type="checkbox" name="goal[private]" id="private">
+  <br>
+  <button>Set Goal</button>
+</form>

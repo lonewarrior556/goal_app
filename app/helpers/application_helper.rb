@@ -6,4 +6,15 @@ module ApplicationHelper
     HTML
   end
 
+  def my_button_to(url, text, method='Post')
+    <<-HTML.html_safe
+      <form class="Button" action="#{url}" method="post">
+        <input type="hidden" name="_method" value="#{method}">
+        #{ authentic_form}
+        <button>#{text}</button>
+      </form>
+    HTML
+  end
+
+
 end
