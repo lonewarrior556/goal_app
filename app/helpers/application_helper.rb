@@ -17,4 +17,15 @@ module ApplicationHelper
   end
 
 
+  def remove_comment_button(type, comment)
+    <<-HTML.html_safe
+      <form class="Button" action="#{comment_url(comment)}" method="post">
+        <input type="hidden" name="_method" value="delete">
+        #{ authentic_form}
+        <input type="hidden" name="comment[type]" value="#{type}">
+        <button>remove comment</button>
+      </form>
+    HTML
+  end
+
 end

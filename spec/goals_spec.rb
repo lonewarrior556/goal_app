@@ -6,6 +6,7 @@ feature "Goals" do
     fill_in 'Username', :with => "test"
     fill_in 'Password', :with => "biscuits"
     click_button "Sign Up"
+  
   end
 
   scenario "should allow user to create goals" do

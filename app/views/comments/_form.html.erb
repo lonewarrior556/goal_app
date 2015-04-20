@@ -1,0 +1,9 @@
+<form class="form" action=" <%= comments_url %> " method="post">
+  <%= authentic_form %>
+  <label for="New Comment">New Comment</label>
+  <input type="text" name="comment[body]" id="New Comment">
+  <br>
+  <input type="hidden" name="comment[<%= type %>_id]" value="<%= id %>">
+  <br>
+  <button>Add Comment</button>
+</form>

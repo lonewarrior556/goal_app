@@ -1,5 +1,18 @@
 <h1><%=@user.username %> </h1>
 
+
+<%= render partial: "comments/form", locals: {type: "user", id: @user.id } %>
+<ul>
+  <% @comments.each do |comment| %>
+  <li>
+   <%= comment.body %>
+   <%=remove_comment_button("user",comment) if comment.author_id == current_user.id %>
+ </li>
+  <% end %>
+
+</ul>
+
+
 <h3>Your Goals</h3>
 <ul>
   <% @user.goals.each do |goal| %>

@@ -2,3 +2,14 @@
 
 
 <%= my_button_to(edit_goal_url(@goal),"Edit Goal", "get") if current_user.id == @goal.user_id%>
+
+<%= render partial: "comments/form", locals: {type: "goal", id: @goal.id} %>
+
+<ul>
+  <% @comments.each do |comment| %>
+    <li>
+      <%= comment.body %>
+      <%= remove_comment_button("goal",comment) if comment.author_id == current_user.id %>
+    </li>
+  <% end %>
+</ul>
